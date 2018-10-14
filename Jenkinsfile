@@ -3,11 +3,12 @@
 node {
     checkout scm
 
-    docker.withRegistry('https://hub.docker.com', 'dockerhub')
+    docker.withRegistry('https://hub.docker.com', 'dockerhub') {
     def customImage = docker.build("kawinpromsopa:${env.BUILD_ID}")
     customImage.inside {
         customImage.push()
     }
+}
 }
 
 // # def customImage = docker.build("kawinpromsopa:${env.BUILD_ID}")
