@@ -36,15 +36,7 @@ pipeline {
             sh 'bash ./clean.sh'
           }
         }
-      }
-    //   
-    stage('Compose'){
-      steps{
-        script{
-            sh 'docker-compose up -d'
-          }
-        }
-      }
+      }  
     }
   }
 }
