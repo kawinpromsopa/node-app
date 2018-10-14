@@ -6,16 +6,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Starting build docker images..'
 		sh 'docker build . -t node-app:v1'
             }
         }
-        stage('Test') {
+        stage('Starting test docker run') {
             steps {
-                echo 'Testing..'
+                echo 'Starting test docker run'
+		sh 'docker run -it -d -p 30000:3000 kawinpromospa:node-app:v1'
             }
         }
-        stage('Deploy') {
+        stage('Pushing docker images to Hub registry') {
             steps {
                 echo 'Deploying....'
             }
