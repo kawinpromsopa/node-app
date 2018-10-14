@@ -1,28 +1,40 @@
 #!/usr/bin/env groovy
 
 pipeline {
-
-    environment {
-        Registry = "kawinpromsopa/node-app/"
-        RegistryCredential = 'dockerhub' 
+  environment {
+    registry = “kawinpromsopa/node-app/”
+    registryCredential = ‘dockerhub’
+    dockerImage = ‘’
+  }
+  agent any
+  tools {nodejs “node” }
+  stages {
+    stage(‘Build’) {
+       steps {
+         sh ‘npm install’
+         sh ‘npm run bowerInstall’
+       }
     }
-    agent any
-    stage {
-    stage ('Bulding image') {
-        steps{
-            script {
-                dockerImages = docker.build docker.build Registry + "$BUILD_ID}"
-            }
-        }
-        stage ('Deploy Image') {
-            steps {
-                script {
-                    docker.withRegistry('',RegistryCredential ) {
-                        dockerImages.push()
-                    }
-                }
-            }
-        }
+    stage(‘Test’) {
+      steps {
+        echo 'test images'
+      }
     }
- }
+    stage(‘Building image’) {
+      steps{
+        script {
+          dockerImage = docker.build registry + “:$BUILD_NUMBER”
+        }
+      }
+    }
+    stage(‘Deploy Image’) {
+      steps{
+         script {
+            docker.withRegistry( ‘’, registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+  }
 }
