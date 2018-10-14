@@ -28,7 +28,7 @@ pipeline {
       }
     }
     // Sent docker images to Registry 
-    stage('Push Image') {
+    stage('Push Image'){
       steps{
          script {
             docker.withRegistry( '', registryCredential ) {
@@ -37,7 +37,8 @@ pipeline {
           }
         }
       }
-    stage('Compose') {
+    //   
+    stage('Compose'){
       steps{
         script{
             sh 'docker-compose up -d'
