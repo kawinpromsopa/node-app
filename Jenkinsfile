@@ -8,6 +8,7 @@ pipeline {
   }
   agent any
   stages {
+
     stage('Building image') {
       steps{
         script {
@@ -15,6 +16,15 @@ pipeline {
         }
       }
     }
+
+    stage('Run image'){
+      steps{
+          script {
+              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app:$BUILD_NUMBER '
+          }
+      }
+    }
+    
     stage('Deploy Image') {
       steps{
          script {
