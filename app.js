@@ -9,7 +9,7 @@ const app = express()
 const config = require('./config.json')
 
 app.get('/', function (req, res) {
-  res.send(config.message||'Hello World!')
+  res.send(config.message||'Hello World, This is a Devops task from Ekoapp by kawinpromsopa!')
 })
 
 app.listen(config.port, function () {
