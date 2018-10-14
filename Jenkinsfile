@@ -7,7 +7,8 @@ pipeline {
         RegistryCredential = 'dockerhub' 
     }
     agent any
-    stage ('Bulding image'){
+    stage {
+    stage ('Bulding image') {
         steps{
             script {
                 dockerImages = docker.build docker.build Registry + "$BUILD_ID}"
@@ -23,4 +24,5 @@ pipeline {
             }
         }
     }
+ }
 }
