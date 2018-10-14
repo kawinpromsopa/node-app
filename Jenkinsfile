@@ -38,13 +38,6 @@ pipeline {
         }
       }
     }
-    stage('Run Docker-compose') {
-      stage{
-        script{
-          echo 'docker-compose'
-        }
-      }
-    }
   }
 }
 
