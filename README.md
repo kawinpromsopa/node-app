@@ -16,5 +16,5 @@ node app.js
 
 
 ```
-Testing: build > run > push to hub-registry
+Testing: build > run > push to hub-registry.
 ```
