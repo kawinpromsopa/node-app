@@ -3,10 +3,9 @@
 node {
     checkout scm
 
-    def customImage = docker.build("kawinpromsopa-myimages:${env.BUILD_ID}")
+    def customImage = docker.build("kawinpromsopa:${env.BUILD_ID}")
 
     customImage.inside {
-        sh 'docker build . -t'
     }
 }
 
