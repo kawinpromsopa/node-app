@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is a sample nodejs express app based on
 http://expressjs.com/en/starter/hello-world.html
 
@@ -13,3 +14,6 @@ To start the app:
 node app.js
 ```
 
+=======
+hello world
+>>>>>>> testing/master
