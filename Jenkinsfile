@@ -3,34 +3,30 @@
 pipeline {
   environment {
     registry = “kawinpromsopa/node-app/”
-    registryCredential = ‘dockerhub’
-    dockerImage = ‘’
+    registryCredential = 'dockerhub'
+    dockerImage = ''
   }
   agent any
-  tools {nodejs “node” }
+  tools {nodejs "node" }
   stages {
-    stage(‘Build’) {
-       steps {
-         sh ‘npm install’
-         sh ‘npm run bowerInstall’
-       }
+    stage('Build') {
     }
-    stage(‘Test’) {
+    stage('Test') {
       steps {
         echo 'test images'
       }
     }
-    stage(‘Building image’) {
+    stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry + “:$BUILD_NUMBER”
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
-    stage(‘Deploy Image’) {
+    stage('Deploy Image') {
       steps{
          script {
-            docker.withRegistry( ‘’, registryCredential ) {
+            docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
         }
