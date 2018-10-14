@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Starting build docker images..'
-		sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app:1.0'
+		sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app'
             }
         }
         stage('Starting test docker run') {
