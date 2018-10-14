@@ -11,4 +11,4 @@ node {
 }
 
 // # def customImage = docker.build("kawinpromsopa:${env.BUILD_ID}")
-// build docker image name is : kawinpromsopa, To and ${env.BUILD_ID} is a number build task in jenkins
+// build docker image name is : kawinpromsopa, To and ${env.BUILD_ID} is a number build task in jenkins.
