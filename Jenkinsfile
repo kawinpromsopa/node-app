@@ -15,7 +15,7 @@ pipeline {
     stage('Build docker image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+          dockerImage = docker.build registry // + ":$BUILD_NUMBER" 
         }
       }
     }
@@ -23,7 +23,7 @@ pipeline {
     stage('Run test image'){
       steps{
           script {
-              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app:$BUILD_NUMBER'
+              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app' // :$BUILD_NUMBER
           }
       }
     }
@@ -34,6 +34,13 @@ pipeline {
             docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
             sh 'bash ./clean.sh'
+          }
+        }
+      }
+      stage('Compose') {
+        steps{
+          script{
+            sh 'docker-compose up -d'
           }
         }
       }
