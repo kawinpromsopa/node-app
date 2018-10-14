@@ -1,11 +1,13 @@
 #!/usr/bin/env groovy
 
 pipeline {
+    
   environment {
     registry = "kawinpromsopa/node-app"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
+
   agent any
   stages {
 
@@ -24,7 +26,7 @@ pipeline {
           }
       }
     }
-    
+
     stage('Deploy Image') {
       steps{
          script {
@@ -36,3 +38,4 @@ pipeline {
     }
   }
 }
+
