@@ -1,7 +1,8 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    
+
+  // RegistryCredential Environment  
   environment {
     registry = "kawinpromsopa/node-app"
     registryCredential = 'dockerhub'
@@ -10,7 +11,7 @@ pipeline {
 
   agent any
   stages {
-
+    // Build images from dockerfile with Jobs Jenkinstag.Build
     stage('Building image') {
       steps{
         script {
@@ -18,7 +19,7 @@ pipeline {
         }
       }
     }
-
+    // Run docker image 
     stage('Run image'){
       steps{
           script {
@@ -26,7 +27,7 @@ pipeline {
           }
       }
     }
-
+    // Sent docker images to Registry 
     stage('Deploy Image') {
       steps{
          script {
