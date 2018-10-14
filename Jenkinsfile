@@ -7,15 +7,7 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  tools {nodejs "node" }
   stages {
-    stage('Build') {
-    }
-    stage('Test') {
-      steps {
-        echo 'test images'
-      }
-    }
     stage('Building image') {
       steps{
         script {
