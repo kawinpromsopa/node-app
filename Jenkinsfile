@@ -5,7 +5,7 @@ pipeline {
   // RegistryCredential Environment  
   environment {
     registry = "kawinpromsopa/node-app"
-    registryCredential = 'dockerhub'
+    registryCredential = 'DockerHub'
     dockerImage = ''
   }
 
