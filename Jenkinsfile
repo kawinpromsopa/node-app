@@ -19,7 +19,7 @@ pipeline {
         stage('Pushing docker images to Hub registry') {
             steps {
                 echo 'Pushing docker images to Hub registry'
-                sh 'kawinpromsopa/node-app:1.0'
+                sh 'docker push kawinpromsopa/node-app:1.0'
             }
         }
     }
