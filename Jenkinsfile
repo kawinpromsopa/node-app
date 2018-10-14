@@ -12,28 +12,36 @@ pipeline {
   agent any
   stages {
     // Build images from dockerfile with Jobs Jenkinstag.Build
-    stage('Building image') {
+    stage('Build docker image') {
       steps{
         script {
-          dockerImage = docker.build registry // + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER" 
         }
       }
     }
     // Run docker image 
-    stage('Run image'){
+    stage('Run test image'){
       steps{
           script {
-              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app' // :$BUILD_NUMBER
+              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app:$BUILD_NUMBER'
+              sh './clean.sh'
           }
       }
     }
     // Sent docker images to Registry 
-    stage('Deploy Image') {
+    stage('Push Image') {
       steps{
          script {
             docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
+        }
+      }
+    }
+    stage('Run Docker-compose') {
+      stage{
+        script{
+          echo 'docker-compose'
         }
       }
     }
