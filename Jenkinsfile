@@ -1,12 +1,12 @@
 #!/usr/bin/env groovy
 
-pipeline {
-    checkout scm  
-         
-            def customImage = docker.build("my-image:${env.BUILD_ID}")
+node {
+    checkout scm
 
-            customImage.inside {
-                echo 'build docker images'
-                sh 'docker build . -t kawinpromsopa/node-app:1.0'
-            }
+    def customImage = docker.build("my-image:${env.BUILD_ID}")
+
+    customImage.inside {
+        sh 'docker build . -t kawinpromsopa/node-app:1.0'
     }
+}
+
