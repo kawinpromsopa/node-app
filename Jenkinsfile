@@ -15,7 +15,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry // + ":$BUILD_NUMBER"
         }
       }
     }
@@ -23,7 +23,7 @@ pipeline {
     stage('Run image'){
       steps{
           script {
-              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app:$BUILD_NUMBER '
+              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app' // :$BUILD_NUMBER
           }
       }
     }
