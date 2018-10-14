@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: "kawinpromsopa/node-app:4"
+    image: "kawinpromsopa/node-app"
     ports:
      - "30000:3000"
 
