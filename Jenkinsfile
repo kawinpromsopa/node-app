@@ -24,7 +24,6 @@ pipeline {
       steps{
           script {
               sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app:$BUILD_NUMBER'
-              sh 'bash ./clean.sh'
           }
       }
     }
@@ -34,6 +33,7 @@ pipeline {
          script {
             docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
+            sh 'bash ./clean.sh'
           }
         }
       }
