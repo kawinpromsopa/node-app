@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Pushing docker images to Hub registry') {
             steps {
-                withDockerRegistry(registry: [credentialsId: 'dockerhub', url: "https://https://hub.docker.com/u/kawinpromsopa/"])
+                withDockerRegistry(registry: [credentialsId: 'dockerhub', url: "https://hub.docker.com/u/kawinpromsopa/"])
                 echo 'Pushing docker images to Hub registry'
                 sh 'docker push kawinpromsopa/node-app:1.0'
             }
