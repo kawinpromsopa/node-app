@@ -13,4 +13,8 @@ To start the app:
 ```
 node app.js
 ```
-testing-build,run-1-2
+
+
+```
+testing: build > run > push to hub-registry
+```
