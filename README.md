@@ -16,5 +16,5 @@ node app.js
 
 
 ```
-build-test-ship-run
+build-test-ship-run.
 ```

@@ -23,7 +23,7 @@ pipeline {
     stage('Run Test){
       steps{
           script {
-              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app // :$BUILD_NUMBER
+              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app
           }
       }
     }
