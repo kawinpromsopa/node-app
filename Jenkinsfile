@@ -20,10 +20,10 @@ pipeline {
       }
     }
     // Run docker image 
-    stage('Run Test){
+    stage('Run Test'){
       steps{
           script {
-              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app'
+              sh 'docker run -it -d -p 30000:3000 kawinpromsopa/node-app' // :$BUILD_NUMBER
           }
       }
     }
